@@ -1,0 +1,48 @@
+{
+  "name": "@jsk-aliyun/service",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lynnkoo/browser-basic-kit.git"
+  },
+  "keywords": [
+    "read as aliyun config service"
+  ],
+  "author": "lynnkoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lynnkoo/browser-basic-kit/issues"
+  },
+  "homepage": "https://github.com/lynnkoo/browser-basic-kit#readme",
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "f12b8bd6d88f9f211723965110f37be5cb72617d",
+  "peerDependencies": {
+    "@jsk-std/io": "^0.0.3",
+    "@jsk-std/x": "^0.0.1"
+  },
+  "dependencies": {
+    "@alicloud/fc2": "^2.2.2",
+    "@alicloud/pop-core": "^1.7.10",
+    "@jsk-std/io": "^0.0.3",
+    "@jsk-std/x": "^0.0.1",
+    "@types/ali-oss": "^6.0.8",
+    "@types/ioredis": "^4.26.4",
+    "@types/lodash": "^4.14.170",
+    "ali-oss": "^6.15.2",
+    "ioredis": "^4.27.6",
+    "lodash": "^4.17.21",
+    "mysql2": "^2.2.5",
+    "toml": "^3.0.0"
+  }
+}

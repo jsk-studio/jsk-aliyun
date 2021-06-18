@@ -1,0 +1,39 @@
+
+[oss]
+client = 'oss://static'
+region = "oss-cn-shanghai"
+package = 'test-package'
+
+[oss.static]
+bucket = "smoex-public"
+endpoint = "https://public.smoex.com"
+
+[res]
+client = 'oss://static'
+
+[res.web]
+package = 'master-web'
+
+[res.h5]
+package = 'master-h5'
+
+[fc]
+region = "cn-shanghai"
+alias = 'smoex-learn-jp-server.6D0A3851CEBB'
+
+[fc.search]
+alias = 'smoex-learn-jp-server.6D0A3851CEBB'
+
+[redis.user]
+host = 'r-uf6b4a74bc1d3ab4pd.redis.rds.aliyuncs.com'
+
+[mysql]
+host = "rm-uf6ptrnm757lc165vao.mysql.rds.aliyuncs.com"
+
+[mysql.search]
+database = 'smoex_learn_jp_search'
+
+[sms.verify]
+sign = 'smoex'
+template = 'SMS_175537915'
+

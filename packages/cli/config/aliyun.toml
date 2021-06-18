@@ -1,0 +1,10 @@
+dev = true
+
+[oss]
+client = 'oss://static'
+region = "oss-cn-shanghai"
+package = 'test-package2'
+
+[oss.static]
+bucket = "smoex-public"
+endpoint = "https://public.smoex.com"
