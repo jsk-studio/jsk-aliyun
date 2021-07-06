@@ -7,9 +7,11 @@
     "jsk-aliyun": "./src/index.js"
   },
   "scripts": {
-    "start": "node ./src/index.js",
     "build": "tsc",
-    "help": "NODE_ENV=production webpack --config /Users/bilibili/Desktop/basic-kit/node-kits/packages/aliyun-cli/src/webpackNode.config.js"
+    "help": "NODE_ENV=production webpack --config /Users/bilibili/Desktop/basic-kit/node-kits/packages/aliyun-cli/src/webpackNode.config.js",
+    "test": "node ./src/index.js",
+    "test:oss-push": "npm run test oss-push ./config",
+    "test:fc-build": "npm run test fc-build ./mock"
   },
   "publishConfig": {
     "access": "public"
@@ -20,14 +22,17 @@
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
+    "@jsk-aliyun/service": "^0.0.1",
+    "@jsk-server/cli": "0.0.2",
+    "@jsk-std/io": "^0.0.4",
     "compressing": "^1.5.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "@jsk-aliyun/service": "^0.0.1",
-    "@types/yargs": "^17.0.0",
+    "@jsk-server/cli": "0.0.2",
+    "@jsk-std/io": "^0.0.4",
     "compressing": "^1.5.1",
-    "webpack-cli": "^3.3.12",
-    "yargs": "^17.0.0-candidate.13"
+    "webpack-cli": "^3.3.12"
   }
 }

@@ -1,4 +1,5 @@
-const { args } = require('../../utils/args')
+#!/usr/bin/env node
+const { args } = require('@jsk-server/cli')
 const { uploadFiles } = require('@jsk-aliyun/service')
 const fs = require('fs')
 const path = require('path')

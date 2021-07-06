@@ -34,7 +34,7 @@
   "dependencies": {
     "@alicloud/fc2": "^2.2.2",
     "@alicloud/pop-core": "^1.7.10",
-    "@jsk-std/io": "^0.0.3",
+    "@jsk-std/io": "^0.0.4",
     "@jsk-std/x": "^0.0.1",
     "@types/ali-oss": "^6.0.8",
     "@types/ioredis": "^4.26.4",
