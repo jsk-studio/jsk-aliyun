@@ -9,23 +9,23 @@ const [rootDir] = args
 process.env.JSK_ROOT_DIR = process.env.JSK_ROOT_DIR || rootDir
 const { spawnSync } = require('child_process');
 
-deleteFolderRecursive(path.join(rootDir, './build'))
+deleteFolderRecursive(path.join(rootDir, './dist'))
 
 spawnSync('jsk-server build', [], { stdio: 'inherit', shell: true })
 
-const bundleDir = `${rootDir}/build/bundle`
+const bundleDir = `${rootDir}/dist/bundle`
 
 createFolders([
-    bundleDir + '/build',
-    bundleDir + '/config',
+    bundleDir + '/dist',
+    bundleDir + '/conf',
 ])
 
 copyFilesSync([
     './package.json',
-    './build/index.js',
-    './config/aliyun.toml',
-    './config/auth.toml',
-    './config/proxy.toml',
+    './dist/index.js',
+    './conf/aliyun.toml',
+    './conf/auth.toml',
+    './conf/proxy.toml',
 ])
 
 compressing.zip.compressDir(bundleDir, bundleDir + '.zip').then(() => {

@@ -90,7 +90,7 @@ function readAliyunConfigs() {
 }
 
 function readAsToml<T = any>(resolvePath: string): Partial<T> {
-    const rootPathStr = process.env.ALIYUN_CONFIG_PATHS || path.resolve('./config')
+    const rootPathStr = process.env.ALIYUN_CONFIG_PATHS || path.resolve('./conf')
     const rootPaths = rootPathStr.split(' ')
     let res = {} as T
     for (const rootPath of rootPaths) {
