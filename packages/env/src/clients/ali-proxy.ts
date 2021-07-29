@@ -73,14 +73,18 @@ function createProxyConfigs() {
         }
         const { to, target, client } = conf  
         if (client) {
-            clientProxy[`^${from}`] = { from, to, client }
+            clientProxy[`^${from}`] = { 
+                from, 
+                to: to || from, 
+                client, 
+            }
             continue
         }
         httpProxy[`^${from}`] = {
             target,
             changeOrigin: true,
             pathRewrite: {
-                [`^${from}`]: to,
+                [`^${from}`]: to || from,
             }
         }
     } 

@@ -42,12 +42,14 @@ test('test ali-oss connection', async () => {
     expect(String(res.content).length > 0).toEqual(true)
 })
 
-test('test ali-oss upload', async done => {
+test('test ali-oss-res put', async done => {
     const res = createOSSResClient(aliyunConfigs.env.res)
     const web = resClients['web']
     await res.putFiles(process.env.ALIYUN_CONFIG_PATHS + '/aliyun.toml')
     await res.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
     await web.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
+    const resp = await res.putString('aaaaaa', '/test-string.json')
+    expect(resp.public_url).toEqual('https://public.smoex.com/test-1234/test-string.json')
     done()
 })
 
@@ -59,7 +61,7 @@ test('test ali-sms', async done => {
 
 test('test ali-fc-proxy', async done => {
     const matcher = createProxyMatcher({
-        url: '/fc-test/kanji?keyword=[3]',
+        url: '/search/kanji?keyword=[3]',
         method: 'GET',
         headers: {}
     })
@@ -71,7 +73,6 @@ test('test ali-fc-proxy', async done => {
     const fcProxy = matcher('fc://')
     const httpProxy = httpMatcher('http://')
     const res = await fcRequestProxy(fcProxy)
-    console.log(httpProxy)
     expect(res.data.code).toEqual(0)
     done()
 })
