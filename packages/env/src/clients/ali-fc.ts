@@ -65,8 +65,9 @@ export function createFCClient(opts: IFCOptions) {
             return await client[key](`${pathPrefix}${mpath}`, data, headers, params)
         }
     }
-    proxy['request'] = async (method: string, mpath: string, ...args: any[]) => {
-        return await client.request(method, `${pathPrefix}${mpath}`, ...args)
+    proxy['request'] = async (method: string, mpath: string, opts = {} as IFCRequestOptions) => {
+        const { headers, params, body, opts: fcOpts } = opts
+        return await client.request(method, `${pathPrefix}${mpath}`, params, body, headers, fcOpts)
     }
     return proxy as IFCClient
 }

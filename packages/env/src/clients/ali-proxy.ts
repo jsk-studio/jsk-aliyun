@@ -7,7 +7,8 @@ const proxyConfigs = createProxyConfigs()
 export type IMatchOptions = {
     url: string,
     method: string,
-    headers: IncomingHttpHeaders,
+    body?: any,
+    headers?: IncomingHttpHeaders,
 }
 
 export type IFCProxyOptions = {
@@ -41,7 +42,8 @@ export async function fcRequestProxy(fcOpts: IFCProxyOptions) {
         throw new Error('Can not Found the FC client: ' + conf.name)
     }
     return await fc.request(opts.method, opts.url.replace(conf.from, conf.to), { 
-        headers: opts.headers
+        headers: opts.headers,
+        body: opts.body,
     })
 }
 
