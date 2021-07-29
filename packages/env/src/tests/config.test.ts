@@ -7,7 +7,9 @@ import { mysqlClients } from "../clients/mysql"
 import { fcClients } from "../clients/ali-fc"
 import { ossClients } from "../clients/ali-oss"
 import { smsClients } from "../clients/ali-sms"
-import { uploadFiles } from "../utils/upload"
+import { createOSSResClient, resClients } from "../clients/ali-oss-res"
+import { aliyunConfigs } from '../config'
+import { createProxyMatcher, fcRequestProxy } from '../clients/ali-proxy'
 
 test('test redis connection', async () => {
     const redis = redisClients['user']
@@ -41,13 +43,35 @@ test('test ali-oss connection', async () => {
 })
 
 test('test ali-oss upload', async done => {
-    await uploadFiles(process.env.ALIYUN_CONFIG_PATHS + '/aliyun.toml')
-    await uploadFiles(process.env.ALIYUN_CONFIG_PATHS as string)
+    const res = createOSSResClient(aliyunConfigs.env.res)
+    const web = resClients['web']
+    await res.putFiles(process.env.ALIYUN_CONFIG_PATHS + '/aliyun.toml')
+    await res.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
+    await web.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
     done()
 })
 
 test('test ali-sms', async done => {
     const sms = smsClients['verify']
     // const res = await sms.send('18317893372', { code: 123456 })
+    done()
+})
+
+test('test ali-fc-proxy', async done => {
+    const matcher = createProxyMatcher({
+        url: '/fc-test/kanji?keyword=[3]',
+        method: 'GET',
+        headers: {}
+    })
+    const httpMatcher = createProxyMatcher({
+        url: '/http-test/kanji?keyword=[3]',
+        method: 'GET',
+        headers: {}
+    })
+    const fcProxy = matcher('fc://')
+    const httpProxy = httpMatcher('http://')
+    const res = await fcRequestProxy(fcProxy)
+    console.log(httpProxy)
+    expect(res.data.code).toEqual(0)
     done()
 })

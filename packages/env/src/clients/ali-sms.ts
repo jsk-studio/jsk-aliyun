@@ -11,7 +11,7 @@ export type ISmsOptions = {
 
 export const smsClients = xSingleton(key => {
     const { aliyun: auth } = aliyunConfigs.auth
-    const { sms: mItem } = aliyunConfigs.aliyun
+    const { sms: mItem } = aliyunConfigs.env
     const item = mItem?.[key]
     if (!item || !auth) {
         throw new Error("Create ali-sms clients is failure!");

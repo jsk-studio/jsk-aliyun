@@ -11,7 +11,7 @@ export type IMysqlOptions = {
 
 export const mysqlClients = xSingleton(key => {
     const { mysql: mAuth } = aliyunConfigs.auth
-    const { mysql: mItem } = aliyunConfigs.aliyun
+    const { mysql: mItem } = aliyunConfigs.env
     const auth = mAuth?.[key]
     const item = mItem?.[key]
     if (!item || !auth) {

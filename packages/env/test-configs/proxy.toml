@@ -1,0 +1,11 @@
+['/fc-test']
+to = '/search'
+client = 'fc://search'
+
+['/http-test']
+to = '/http-test'
+target = 'http://gateway.smoex.com/'
+
+# ['/push']
+# to = '/push'
+# target = 'http://gateway.smoex.com/'

@@ -1,6 +1,6 @@
 {
   "name": "@jsk-aliyun/cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "src/index.js",
   "bin": {
@@ -10,7 +10,7 @@
     "build": "tsc",
     "help": "NODE_ENV=production webpack --config /Users/bilibili/Desktop/basic-kit/node-kits/packages/aliyun-cli/src/webpackNode.config.js",
     "test": "node ./src/index.js",
-    "test:oss-push": "npm run test oss-push ./config",
+    "test:oss-push": "npm run test oss-push ./conf",
     "test:fc-build": "npm run test fc-build ./mock"
   },
   "publishConfig": {
@@ -22,15 +22,15 @@
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
-    "@jsk-aliyun/service": "^0.0.1",
-    "@jsk-server/cli": "0.0.2",
+    "@jsk-aliyun/env": "^0.0.1",
+    "@jsk-server/cli": "0.0.4",
     "@jsk-std/io": "^0.0.4",
     "compressing": "^1.5.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "@jsk-aliyun/service": "^0.0.1",
-    "@jsk-server/cli": "0.0.3",
+    "@jsk-aliyun/env": "^0.0.1",
+    "@jsk-server/cli": "0.0.4",
     "@jsk-std/io": "^0.0.4",
     "compressing": "^1.5.1",
     "webpack-cli": "^3.3.12"

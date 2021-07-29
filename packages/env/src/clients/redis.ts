@@ -20,7 +20,7 @@ export function createRedisClient(opts: IRedisOptions) {
 
 export const redisClients = xSingleton(key => {
   const { redis: mAuth } = aliyunConfigs.auth
-  const { redis: mItem } = aliyunConfigs.aliyun
+  const { redis: mItem } = aliyunConfigs.env
   const auth = mAuth?.[key]
   const item = mItem?.[key]
   if (!item || !auth) {

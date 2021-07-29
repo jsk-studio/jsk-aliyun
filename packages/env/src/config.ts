@@ -21,6 +21,10 @@ export type IAliyunOSSItem = {
     bucket: string,
     endpoint: string,
 }
+export type IAliyunOSSResItem = {
+    client?: string,
+    package?: string,
+}
 export type IAliyunFCItem = {
     region: string,
     alias: string,
@@ -43,7 +47,14 @@ export type IRedisItem = {
     host: string,
 }
 
+
 type MapKeyTypes<T> = { [key in string] : T } & T
+
+type IAliyunAuth = {
+    accessKeyId: string,
+    accessKeySecret: string,
+    accountId: number,
+}
 
 type IAuthConfigs = {
     aliyun: IAliyunAuth,
@@ -52,41 +63,28 @@ type IAuthConfigs = {
 }
 
 type IAliyunEnvConfigs = {
-    oss: {
-        target: string,
-        package: string,
-    },
-    fc: {
-        alias: string,
-    },
-}
-
-type IAliyunOSSRes = {
-    client?: string,
-    package?: string,
-}
-
-type IAliyunConfigs = {
     dev?: boolean,
-    // env: IAliyunEnvConfigs,
-    oss?: MapKeyTypes<IAliyunOSSItem> & IAliyunOSSRes,
+    oss?: MapKeyTypes<IAliyunOSSItem>,
+    res?: MapKeyTypes<IAliyunOSSResItem>,
     fc?: MapKeyTypes<IAliyunFCItem>,
     sms?: MapKeyTypes<IAliyunSMSItem>,
     mysql?:  MapKeyTypes<IMysqlItem>,
     redis?: MapKeyTypes<IRedisItem>,
 }
 
-type IAliyunAuth = {
-    accessKeyId: string,
-    accessKeySecret: string,
-    accountId: number,
+type IAliyunProxyConfigs = {
+    [key in string]?: {
+        to: string,
+        target?: string,
+        client?: string,
+    }
 }
 
 function readAliyunConfigs() {
     const auth = readAsToml<IAuthConfigs>('auth')
-    const aliyun = readAsToml<IAliyunConfigs>('aliyun')
-    
-    return { auth, aliyun }
+    const env = readAsToml<IAliyunEnvConfigs>('aliyun')
+    const proxy = readAsToml<IAliyunProxyConfigs>('proxy')
+    return { auth, env, proxy }
 }
 
 function readAsToml<T = any>(resolvePath: string): Partial<T> {

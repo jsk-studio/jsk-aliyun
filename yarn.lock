@@ -1279,6 +1279,24 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@jsk-aliyun/service@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@jsk-aliyun/service/-/service-0.0.1.tgz#2fd0a09af301e74aef898ef923e0a9a35d5be860"
+  integrity sha512-jSXVRpYRSBmH5ugwKbbEEaf8A4qbOwMhbTUfojY8EVPq8CFeaLOx63JNtEfqx269kewaiZ8OJlF9O8dOfcUECA==
+  dependencies:
+    "@alicloud/fc2" "^2.2.2"
+    "@alicloud/pop-core" "^1.7.10"
+    "@jsk-std/io" "^0.0.4"
+    "@jsk-std/x" "^0.0.1"
+    "@types/ali-oss" "^6.0.8"
+    "@types/ioredis" "^4.26.4"
+    "@types/lodash" "^4.14.170"
+    ali-oss "^6.15.2"
+    ioredis "^4.27.6"
+    lodash "^4.17.21"
+    mysql2 "^2.2.5"
+    toml "^3.0.0"
+
 "@jsk-server/cli@0.0.3":
   version "0.0.3"
   resolved "https://registry.nlark.com/@jsk-server/cli/download/@jsk-server/cli-0.0.3.tgz#8b3a60a7e1ead701dec9db874ee912c1409a9f9c"

@@ -1,10 +1,13 @@
 dev = true
 
 [oss]
-client = 'oss://static'
 region = "oss-cn-shanghai"
-package = 'test-package3'
 
 [oss.static]
 bucket = "smoex-public"
 endpoint = "https://public.smoex.com"
+
+[res]
+client = 'oss://static'
+package = 'test-1234'
+

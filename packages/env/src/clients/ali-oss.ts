@@ -12,7 +12,7 @@ export type IOSSOptions = {
 }
 export const ossClients = xSingleton(key => {
     const { aliyun: auth } = aliyunConfigs.auth
-    const { oss: mItem } = aliyunConfigs.aliyun
+    const { oss: mItem } = aliyunConfigs.env
     const item = mItem?.[key]
     if (!item || !auth) {
         throw new Error("Create ali-oss clients is failure!");
@@ -21,7 +21,7 @@ export const ossClients = xSingleton(key => {
         accessKeyId: auth.accessKeyId,
         accessKeySecret: auth.accessKeySecret,
         region: mItem?.region || item.region,
-        internal: !aliyunConfigs.aliyun.dev,
+        internal: !aliyunConfigs.env.dev,
         bucket: mItem?.bucket || item.bucket,
         endpoint: item.endpoint,
     })

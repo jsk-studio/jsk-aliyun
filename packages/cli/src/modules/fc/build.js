@@ -6,7 +6,7 @@ const compressing = require('compressing')
 const fs = require('fs')
 
 const [rootDir] = args
-process.env.JSK_ROOT_DIR = process.env.JSK_ROOT_DIR || rootDir
+process.env.JSK_ROOT_DIR = process.env.JSK_ROOT_DIR || rootDir || '.'
 const { spawnSync } = require('child_process');
 
 deleteFolderRecursive(path.join(rootDir, './dist'))
