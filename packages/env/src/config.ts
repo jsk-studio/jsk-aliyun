@@ -11,11 +11,6 @@ export type IMysqlItem = {
     host?: string
 }
 
-export type IAliyunApiItem = {
-    alias: string,
-    host?: string,
-}
-
 export type IAliyunOSSItem = {
     region: string,
     bucket: string,

@@ -26,7 +26,7 @@ export const fcClients = xSingleton(key => {
         accessKeySecret: auth.accessKeySecret,
         region: mItem?.region || item.region,
         alias: item.alias,
-        internal: !aliyunConfigs.env.dev
+        internal: !aliyunConfigs.env.dev,
     })
 })
 

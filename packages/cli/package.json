@@ -8,7 +8,6 @@
   },
   "scripts": {
     "build": "tsc",
-    "help": "NODE_ENV=production webpack --config /Users/bilibili/Desktop/basic-kit/node-kits/packages/aliyun-cli/src/webpackNode.config.js",
     "test": "node ./src/index.js",
     "test:oss-push": "npm run test oss-push ./conf",
     "test:fc-build": "npm run test fc-build ./mock"
