@@ -1,6 +1,7 @@
 import mysql from 'mysql2/promise'
 import { xSingleton } from '@jsk-std/x'
 import { aliyunConfigs } from "../config";
+import { authConfigs } from '@jsk-server/env';
 
 export type IMysqlOptions = {
     host: string,
@@ -10,8 +11,8 @@ export type IMysqlOptions = {
 }
 
 export const mysqlClients = xSingleton(key => {
-    const { mysql: mAuth } = aliyunConfigs.auth
-    const { mysql: mItem } = aliyunConfigs.env
+    const { mysql: mAuth } = authConfigs
+    const { mysql: mItem } = aliyunConfigs
     const auth = mAuth?.[key]
     const item = mItem?.[key]
     if (!item || !auth) {

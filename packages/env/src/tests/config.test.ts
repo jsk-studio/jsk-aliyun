@@ -1,6 +1,6 @@
 
 import path from 'path'
-process.env.ALIYUN_CONFIG_PATHS = `${path.join(__dirname, '../../test-configs')}`
+process.env.JSK_CONFIG_PATHS = `${path.join(__dirname, '../../test-configs')}`
 
 import { redisClients } from "../clients/redis"
 import { mysqlClients } from "../clients/mysql"
@@ -9,7 +9,7 @@ import { ossClients } from "../clients/ali-oss"
 import { smsClients } from "../clients/ali-sms"
 import { createOSSResClient, resClients } from "../clients/ali-oss-res"
 import { aliyunConfigs } from '../config'
-import { createProxyMatcher, fcRequestProxy } from '../clients/ali-proxy'
+import { createProxyMatcher, fcRequestProxy } from '../clients/ali-fc-proxy'
 
 test('test redis connection', async () => {
     const redis = redisClients['user']
@@ -43,11 +43,11 @@ test('test ali-oss connection', async () => {
 })
 
 test('test ali-oss-res put', async done => {
-    const res = createOSSResClient(aliyunConfigs.env.res)
+    const res = createOSSResClient(aliyunConfigs.res)
     const web = resClients['web']
-    await res.putFiles(process.env.ALIYUN_CONFIG_PATHS + '/aliyun.toml')
-    await res.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
-    await web.putFiles(process.env.ALIYUN_CONFIG_PATHS as string)
+    await res.putFiles(process.env.JSK_CONFIG_PATHS + '/aliyun.toml')
+    await res.putFiles(process.env.JSK_CONFIG_PATHS as string)
+    await web.putFiles(process.env.JSK_CONFIG_PATHS as string)
     const resp = await res.putString('aaaaaa', '/test-string.json')
     expect(resp.public_url).toEqual('https://public.smoex.com/test-1234/test-string.json')
     done()

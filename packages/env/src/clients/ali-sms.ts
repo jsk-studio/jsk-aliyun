@@ -1,4 +1,5 @@
 import Sms from '@alicloud/pop-core'
+import { authConfigs } from '@jsk-server/env';
 import { xSingleton } from '@jsk-std/x'
 import { aliyunConfigs } from "../config";
 
@@ -10,8 +11,8 @@ export type ISmsOptions = {
 }
 
 export const smsClients = xSingleton(key => {
-    const { aliyun: auth } = aliyunConfigs.auth
-    const { sms: mItem } = aliyunConfigs.env
+    const { aliyun: auth } = authConfigs
+    const { sms: mItem } = aliyunConfigs
     const item = mItem?.[key]
     if (!item || !auth) {
         throw new Error("Create ali-sms clients is failure!");

@@ -4,6 +4,7 @@ import { ossClients } from '../clients/ali-oss'
 import { PassThrough} from 'stream'
 import { xSingleton } from '@jsk-std/x'
 import path from 'path'
+import { authConfigs } from '@jsk-server/env'
 
 
 export type IOSSResOption = {
@@ -12,8 +13,8 @@ export type IOSSResOption = {
 }
 
 export const resClients = xSingleton(key => {
-    const { aliyun: auth } = aliyunConfigs.auth
-    const { res: mItem } = aliyunConfigs.env
+    const { aliyun: auth } = authConfigs
+    const { res: mItem } = aliyunConfigs
     const item = mItem?.[key]
     if (!item || !auth) {
         throw new Error("Create ali-oss-res clients is failure!");
@@ -23,14 +24,14 @@ export const resClients = xSingleton(key => {
 
 export function createOSSResClient(opts?: IOSSResOption) {
     if (opts && !opts.client) {
-        opts.client = aliyunConfigs.env.res?.client
+        opts.client = aliyunConfigs.res?.client
     }
     if (!opts?.client || !opts.client.includes('oss://') ) {
         throw new Error('Config Error: ' + opts);
     }
     const clientName = opts.client.trim().split('oss://')[1]
     const client = ossClients[clientName]
-    const clientConf = aliyunConfigs.env.oss?.[clientName]
+    const clientConf = aliyunConfigs.oss?.[clientName]
     if (!client || !clientConf) {
         throw new Error('Client Notfound: ' + opts.client);
     }

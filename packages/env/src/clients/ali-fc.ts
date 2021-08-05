@@ -3,6 +3,7 @@
 import FC from '@alicloud/fc2'
 import { xSingleton } from '@jsk-std/x'
 import { aliyunConfigs } from "../config";
+import { authConfigs } from '@jsk-server/env';
 
 export type IFCOptions = {
     accessKeyID: string,
@@ -14,8 +15,8 @@ export type IFCOptions = {
 }
 
 export const fcClients = xSingleton(key => {
-    const { aliyun: auth } = aliyunConfigs.auth
-    const { fc: mItem } = aliyunConfigs.env
+    const { aliyun: auth } = authConfigs
+    const { fc: mItem } = aliyunConfigs
     const item = mItem?.[key]
     if (!item || !auth) {
         throw new Error("Create ali-fc clients is failure!");
@@ -26,7 +27,7 @@ export const fcClients = xSingleton(key => {
         accessKeySecret: auth.accessKeySecret,
         region: mItem?.region || item.region,
         alias: item.alias,
-        internal: !aliyunConfigs.env.dev,
+        internal: !aliyunConfigs.dev,
     })
 })
 
@@ -80,7 +81,7 @@ function revertAliasrName(serverName: string) {
 
 export function revertRequestUrl(url: string) {
     const fcVersion = '2016-08-15'
-    const { fc } = aliyunConfigs.env
+    const { fc } = aliyunConfigs
     const { functionName } = revertAliasrName(fc?.alias!)
     return url.replace(new RegExp(`/${fcVersion}/proxy(\/.*?\/)${functionName}`), '')
 }

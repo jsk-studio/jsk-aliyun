@@ -1,8 +1,6 @@
-import { aliyunConfigs } from '../config'
+import { proxyConfigs } from '@jsk-server/env'
 import { fcClients } from './ali-fc'
 import { IncomingHttpHeaders } from 'http';
-
-const proxyConfigs = createProxyConfigs()
 
 export type IMatchOptions = {
     url: string,
@@ -61,36 +59,6 @@ function matchServiceConfig(proxies: any, url: string, prefix?: string) {
         }
     }
     return null
-}
-
-
-function createProxyConfigs() {
-    const httpProxy = {} as any
-    const clientProxy = {} as any
-    const proxies = aliyunConfigs.proxy
-    for (const from of Object.keys(proxies)) {
-        const conf = proxies[from]
-        if (!conf) {
-            continue
-        }
-        const { to, target, client } = conf  
-        if (client) {
-            clientProxy[`^${from}`] = { 
-                from, 
-                to: to || from, 
-                client, 
-            }
-            continue
-        }
-        httpProxy[`^${from}`] = {
-            target,
-            changeOrigin: true,
-            pathRewrite: {
-                [`^${from}`]: to || from,
-            }
-        }
-    } 
-    return { httpProxy, clientProxy }
 }
 
 

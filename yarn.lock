@@ -1279,10 +1279,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@jsk-aliyun/service@^0.0.1":
+"@jsk-aliyun/env@^0.0.1":
   version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@jsk-aliyun/service/-/service-0.0.1.tgz#2fd0a09af301e74aef898ef923e0a9a35d5be860"
-  integrity sha512-jSXVRpYRSBmH5ugwKbbEEaf8A4qbOwMhbTUfojY8EVPq8CFeaLOx63JNtEfqx269kewaiZ8OJlF9O8dOfcUECA==
+  resolved "https://registry.yarnpkg.com/@jsk-aliyun/env/-/env-0.0.1.tgz#434b3cb74e60b8c5e0f78c534232e7bf1ce63c26"
+  integrity sha512-163FNTWDFWJqZt+3QVKx2X/lcl//bJXqDpT1mPkAZZ8iKtMPKoOadYhgyui2tMyTCom3TCvgEEPIu8jHJ/g4lg==
   dependencies:
     "@alicloud/fc2" "^2.2.2"
     "@alicloud/pop-core" "^1.7.10"
@@ -1297,10 +1297,10 @@
     mysql2 "^2.2.5"
     toml "^3.0.0"
 
-"@jsk-server/cli@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.nlark.com/@jsk-server/cli/download/@jsk-server/cli-0.0.3.tgz#8b3a60a7e1ead701dec9db874ee912c1409a9f9c"
-  integrity sha1-izpgp+Hq1wHeyduHTukSwUCan5w=
+"@jsk-server/cli@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@jsk-server/cli/-/cli-0.0.4.tgz#e0a814269d81034287222129bc061e4107b2acd7"
+  integrity sha512-DBIe4McaT+VBSScUjkT8KRXsHH2V/r50ihuL48qCaA1BzJKY61MrOKEiIUox8qCHZ+mPD9CPszU9feY6dtwhPQ==
   dependencies:
     "@babel/core" "^7.14.6"
     "@babel/preset-env" "^7.14.7"
@@ -1311,6 +1311,16 @@
     webpack "^5.42.1"
     webpack-cli "^3.3.12"
     yargs "^17.0.0-candidate.13"
+
+"@jsk-server/env@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@jsk-server/env/-/env-0.0.1.tgz#2e535efd668429efbc7a2c9469982025df2733f6"
+  integrity sha512-whAW8agvyI+t/rvaWEgf7dafb8EBlcLwIRrGIDkFEzvvkwzXLbwb6XHQrGOZY3Spj+GWogAAqAqsrPzAYRCxtg==
+  dependencies:
+    "@types/lodash" "^4.14.172"
+    "@types/node" "^16.4.12"
+    lodash "^4.17.21"
+    toml "^3.0.0"
 
 "@jsk-std/io@^0.0.4":
   version "0.0.4"
@@ -2276,6 +2286,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.170.tgz#0d67711d4bf7f4ca5147e9091b847479b87925d6"
   integrity sha512-bpcvu/MKHHeYX+qeEN8GE7DIravODWdACVA1ctevD8CN24RhPZIKMn9ntfAsrvLfSX3cR5RrBKAbYm9bGs0A+Q==
 
+"@types/lodash@^4.14.172":
+  version "4.14.172"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.172.tgz#aad774c28e7bfd7a67de25408e03ee5a8c3d028a"
+  integrity sha512-/BHF5HAx3em7/KkzVKm3LrsD6HZAXuXO1AJZQ3cRRBZj4oHZDviWPYu0aEplAqDFNHZPW6d3G7KN+ONcCCC7pw==
+
 "@types/minimatch@*":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.4.tgz#f0ec25dbf2f0e4b18647313ac031134ca5b24b21"
@@ -2295,6 +2310,11 @@
   version "14.17.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.3.tgz#6d327abaa4be34a74e421ed6409a0ae2f47f4c3d"
   integrity sha512-e6ZowgGJmTuXa3GyaPbTGxX17tnThl2aSSizrFthQ7m9uLGZBXiGhgE55cjRZTF5kjZvYn9EOPOMljdjwbflxw==
+
+"@types/node@^16.4.12":
+  version "16.4.12"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.12.tgz#961e3091f263e6345d2d84afab4e047a60b4b11b"
+  integrity sha512-zxrTNFl9Z8boMJXs6ieqZP0wAhvkdzmHSxTlJabM16cf5G9xBc1uPRH5Bbv2omEDDiM8MzTfqTJXBf0Ba4xFWA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"

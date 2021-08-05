@@ -2,6 +2,7 @@
 import Redis from 'ioredis';
 import { xSingleton } from '@jsk-std/x'
 import { aliyunConfigs } from "../config";
+import { authConfigs } from '@jsk-server/env';
 
 export type IRedisOptions = {
     host: string,
@@ -19,8 +20,8 @@ export function createRedisClient(opts: IRedisOptions) {
 }
 
 export const redisClients = xSingleton(key => {
-  const { redis: mAuth } = aliyunConfigs.auth
-  const { redis: mItem } = aliyunConfigs.env
+  const { redis: mAuth } = authConfigs
+  const { redis: mItem } = aliyunConfigs
   const auth = mAuth?.[key]
   const item = mItem?.[key]
   if (!item || !auth) {

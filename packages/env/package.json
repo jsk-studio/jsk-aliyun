@@ -1,6 +1,6 @@
 {
   "name": "@jsk-aliyun/env",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "lib/index.js",
   "sideEffects": false,
@@ -29,11 +29,13 @@
   "gitHead": "f12b8bd6d88f9f211723965110f37be5cb72617d",
   "peerDependencies": {
     "@jsk-std/io": "^0.0.3",
-    "@jsk-std/x": "^0.0.1"
+    "@jsk-std/x": "^0.0.1",
+    "@jsk-server/env": "^0.0.2"
   },
   "dependencies": {
     "@alicloud/fc2": "^2.2.2",
     "@alicloud/pop-core": "^1.7.10",
+    "@jsk-server/env": "^0.0.2",
     "@jsk-std/io": "^0.0.4",
     "@jsk-std/x": "^0.0.1",
     "@types/ali-oss": "^6.0.8",
@@ -42,7 +44,6 @@
     "ali-oss": "^6.15.2",
     "ioredis": "^4.27.6",
     "lodash": "^4.17.21",
-    "mysql2": "^2.2.5",
-    "toml": "^3.0.0"
+    "mysql2": "^2.2.5"
   }
 }
