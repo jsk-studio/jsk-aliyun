@@ -4,6 +4,10 @@ import { xSingleton } from '@jsk-std/x'
 import { aliyunConfigs } from "../config";
 import { authConfigs } from '@jsk-server/env';
 
+export type IRedisClient = Redis.Redis & {
+  getJSON: <T = any>(key: string) => Promise<T | undefined>
+}
+
 export type IRedisOptions = {
     host: string,
     password?: string,
@@ -16,7 +20,11 @@ export function createRedisClient(opts: IRedisOptions) {
     password: opts.password || undefined,
     keyPrefix: opts.prefix,
   })
-  return client
+  client.constructor.prototype.getJSON = async (key: string) => {
+    const val = await client.get(key)
+    return val && JSON.parse(val)
+  }
+  return client as IRedisClient
 }
 
 export const redisClients = xSingleton(key => {

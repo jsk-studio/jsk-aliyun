@@ -34,11 +34,12 @@ export function createSmsClient(opts: ISmsOptions) {
     })
     return {
         async send(phone: string, param?: any) {
+            const tempParam = param && (typeof param === 'string' ? param : JSON.stringify(param))
             return await client.request('SendSms', {
                 'PhoneNumbers': phone,
                 'SignName': opts.signName,
                 'TemplateCode': opts.templateCode,
-                'TemplateParam': JSON.stringify(param),
+                'TemplateParam': tempParam,
             }, { method: 'POST' })
         }
     }

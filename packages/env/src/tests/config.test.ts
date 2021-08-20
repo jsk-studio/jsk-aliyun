@@ -14,10 +14,14 @@ import { createProxyMatcher, fcRequestProxy } from '../clients/ali-fc-proxy'
 test('test redis connection', async () => {
     const redis = redisClients['user']
     const val = Math.random().toString()
-    console.log(val)
     await redis.set('redis-test', val)
+    await redis.setex('json-key', 1000, JSON.stringify({ a : 1 }))
     const res = await redis.get('redis-test')
+    const json = await redis.getJSON('json-key')
+    const jsonNull = await redis.getJSON('json-key-null')
     expect(val).toEqual(res)
+    expect(jsonNull).toEqual(null)
+    expect(json.a).toEqual(1)
     redis.quit()
 })
 
